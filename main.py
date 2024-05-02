@@ -4,7 +4,7 @@ def lambda_handler(event, context):
     # TODO implement
     prompt ="prompt"
 
-    kwargs = {
+    kwargs = """{
                 "modelId": "anthropic.claude-3-sonnet-20240229-v1:0",
                 "contentType": "application/json",
                 "accept": "application/json",
@@ -31,7 +31,7 @@ def lambda_handler(event, context):
                     }
                     ]
                 }
-                }
+                }"""
     
     return {
         'statusCode': 200,
