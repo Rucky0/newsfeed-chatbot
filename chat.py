@@ -13,6 +13,7 @@ def api_call(input):
     }
 
     response = requests.post(url, json=payload, headers=headers)
+    print(response)
 
     # Check if the request was successful
     if response.status_code == 200:
@@ -52,4 +53,3 @@ if prompt := st.chat_input("How can I assist you?"):
 
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": api_text})
-    print(st.session_state.messages)
