@@ -13,7 +13,6 @@ def api_call(input):
     }
 
     response = requests.post(url, json=payload, headers=headers)
-    print(response)
 
     # Check if the request was successful
     if response.status_code == 200:
