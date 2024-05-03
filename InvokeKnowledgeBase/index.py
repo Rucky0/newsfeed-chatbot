@@ -14,7 +14,7 @@ kb_id = os.environ.get("KNOWLEDGE_BASE_ID")
 #print (kb_id)
 
 # declare model id for calling RetrieveAndGenerate API
-model_id = "anthropic.claude-instant-v1"
+model_id = "anthropic.claude-3-sonnet"
 model_arn = f'arn:aws:bedrock:{region}::foundation-model/{model_id}'
 
 def retrieveAndGenerate(input, kbId, model_arn, sessionId):
