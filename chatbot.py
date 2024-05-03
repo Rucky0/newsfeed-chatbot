@@ -11,10 +11,8 @@ def api_call(input):
     headers = {
         "Content-Type": "application/json"
     }
-    print(payload)
 
     response = requests.post(url, json=payload, headers=headers)
-    print(response.json())
     # Check if the request was successful
     if response.status_code == 200:
         # The request was successful, so we can process the response data
