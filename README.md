@@ -8,7 +8,7 @@ The Chatbot project queries a knowledge base and utilizes this information to in
 ![Chatbot Architecture](media/architecture.svg)
 
 ## Chatbot-demo
-<video src="media/chatbot_demo.mp4" controls></video>
+https://github.com/Rucky0/newsfeed-chatbot/assets/112190406/afbae6eb-634e-453f-a1da-51409ab5e147
 
 # Chatbot-Setup
 
