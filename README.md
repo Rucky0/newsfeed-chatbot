@@ -1,10 +1,22 @@
+This project is a chatbot implemented using AWS services, particularly API Gateway, AWS Lambda, Bedrock, Knowledge Base, and S3. It leverages the Bedrock Agent Runtime to facilitate natural language processing and generation.
+
+# Chatbot description
+The Chatbot project queries a knowledge base and utilizes this information to invoke a Large Language Model (LLM) to generate responses. It enables users to interact with the system through a frontend interface and receives responses generated based on the provided inputs and pre-existing knowledge base.
+
+
+## Architecture
+![Chatbot Architecture](media/architecture.svg)
+
+## Chatbot-demo
+<video src="media/chatbot_demo.mp4" controls></video>
+
 # Chatbot-Setup
 
 ## AWS-setup
  1. Setup S3 bucket and add files.
  2. Set up knowledgebase and add the previously created S3 bucket.
  3. Set up a lambda function with a API Gateway as trigger
- 4. Change the following parameters in the lambda function: `API_GATEWAY_URL` & `KNOWLEDGEBASE_ID`
+ 4. Change the following parameters in the lambda function: `API_GATEWAY_URL`, `KNOWLEDGEBASE_ID` & `INSTRUCTIONS FOR THE CHATBOT`
 
 ### Lambda function
 ```python
@@ -25,7 +37,7 @@ def retrieve(query, kbId, numberOfResults=5):
         knowledgeBaseId=kbId,
         retrievalConfiguration= {
             'vectorSearchConfiguration': {
-                'numberOfResults': 50
+                'numberOfResults': numberOfResults
             }
         }
     )
@@ -54,7 +66,7 @@ def lambda_handler(event, context):
             retrievalResults = response_text['retrievalResults']
             contexts = get_contexts(retrievalResults)
             
-            prompt = f"""Objective: INSTRUCTIONS FOR THE CHATBBOT
+            prompt = f"""Objective: INSTRUCTIONS FOR THE CHATBOT
             
             
             <context>
@@ -105,5 +117,5 @@ def lambda_handler(event, context):
 ```
 
 # LocalHost-setup
-1. Creat a url.py file which has the variablename ```API_GATEWAY_URL``` with the string for the API Gateway created previously.
+1. Creat a url.py file which has the variablename ```API_GATEWAY_URL``` with the URL string for the API Gateway created previously.
 2. Open the terminal and run `streamlit run chatbot.py`
